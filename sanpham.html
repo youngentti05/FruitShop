@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sản phẩm | Trái Cây Tươi</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="logo">
+        <img src="assets/img/logo.png" alt="Logo" />
+        <span>Trái Cây Tươi</span>
+      </div>
+
+      <nav class="main-nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="sanpham.html" class="active">Sản phẩm</a>
+        <a href="khuyenmai.html">Khuyến mãi</a>
+        <a href="lienhe.html">Liên hệ</a>
+      </nav>
+
+      <div class="header-right">
+        <input type="text" id="searchInput" placeholder="Tìm trái cây..." class="search-box" />
+        <button class="search-btn" id="searchBtn">🔍</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO RẤT MỎNG ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">Danh sách sản phẩm</h1>
+      <p class="page-sub">Trái cây tươi mỗi ngày · Giao tận nơi</p>
+    </div>
+  </section>
+
+  <!-- ===== KHU NỘI DUNG ===== -->
+  <section class="product-page">
+    <div class="container product-layout">
+
+      <!-- ==== LỌC ==== -->
+      <aside class="filter-box">
+        <h2 class="filter-title">Lọc sản phẩm</h2>
+
+        <div class="filter-group">
+          <h3>Xuất xứ</h3>
+          <label><input type="checkbox" /> Việt Nam</label>
+          <label><input type="checkbox" /> Nhập khẩu</label>
+          <label><input type="checkbox" /> Thái Lan</label>
+          <label><input type="checkbox" /> Úc</label>
+        </div>
+
+        <div class="filter-group">
+          <h3>Mức giá</h3>
+          <label><input type="radio" name="price" /> Dưới 50.000đ</label>
+          <label><input type="radio" name="price" /> 50.000đ - 100.000đ</label>
+          <label><input type="radio" name="price" /> Trên 100.000đ</label>
+        </div>
+
+        <button class="filter-apply">Áp dụng</button>
+      </aside>
+
+      <!-- ==== DANH SÁCH ==== -->
+      <main class="product-list-area">
+        <div id="productGrid" class="product-grid"></div>
+
+        <!-- PHÂN TRANG -->
+        <div class="pagination" id="pagination">
+          <a href="#" class="page-btn active" data-page="1">1</a>
+          <a href="#" class="page-btn" data-page="2">2</a>
+          <a href="#" class="page-btn" data-page="3">3</a>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-box">
+        <h4>Thông tin liên hệ</h4>
+        <p>📍 123.91, Q.B, C.B TP.HCM</p>
+        <p>📞 0128-456-799</p>
+        <p>📧 info@traicaytuoi.vn</p>
+      </div>
+
+      <div class="footer-box">
+        <h4>Kết nối với chúng tôi</h4>
+        <p>🌐 Facebook</p>
+        <p>📸 Instagram</p>
+      </div>
+
+      <div class="footer-box">
+        <h4>Hỗ trợ</h4>
+        <p>Chính sách giao hàng</p>
+        <p>Chính sách đổi trả</p>
+      </div>
+    </div>
+    <p class="copyright">© 2025 Trái Cây Tươi. All rights reserved.</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="js/sanpham.js"></script>
+</body>
+</html>
