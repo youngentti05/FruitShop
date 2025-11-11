@@ -351,11 +351,10 @@
   display: inline-block;
   margin-bottom: 14px;
 }
-
 .tag.low-stock {
-  background-color: #fff3e0;
-  color: #e65100;
-  border: 1px solid #ffcc80;
+  background-color: #fff3f3;   /* nền đỏ nhạt */
+  color: #d32f2f;              /* đỏ đậm cho chữ */
+  border: 1px solid #ffcdd2;   /* viền đỏ nhạt */
 }
 
 /* nút thêm vào giỏ */
@@ -544,7 +543,6 @@
   font-weight: 700;
 }
 
-/* ==== CÂN CHỈNH FORM LOGIN CHUẨN GIỮA TRANG ==== */
 /* ===== TRANG ĐĂNG NHẬP / ĐĂNG KÝ ===== */
 .auth-section {
   display: flex;
@@ -567,7 +565,7 @@
   border-radius: 18px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   text-align: center;
-  width: 360px; /* hẹp hơn 1 chút cho gọn */
+  width: 360px;
   margin: 0 auto;
   transition: all 0.4s ease;
   display: flex;
@@ -583,7 +581,6 @@
   text-align: center;
 }
 
-/* Căn giữa các input và giữ khoảng cách đều */
 .auth-form {
   width: 100%;
   display: flex;
@@ -592,7 +589,7 @@
 }
 
 .auth-form input {
-  width: 90%; /* giảm một chút để không sát mép */
+  width: 90%;
   padding: 12px 14px;
   margin-bottom: 16px;
   border: 1px solid #ccc;
@@ -608,7 +605,7 @@
 }
 
 .btn-primary.full {
-  width: 90%; /* khớp với input */
+  width: 90%;
   padding: 14px 0;
   border-radius: 8px;
   font-size: 16px;
@@ -652,3 +649,4 @@
 .alert.error {
   background-color: #d32f2f;
 }
+
