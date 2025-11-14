@@ -342,6 +342,59 @@
 
 .breadcrumb a {
   color: #2e7d32;
+  font-weight: 600;
+  margin: 5px 0 10px;
+}
+
+.tag {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+.tag.low-stock {
+  background-color: #fff3f3;   /* nền đỏ nhạt */
+  color: #d32f2f;              /* đỏ đậm cho chữ */
+  border: 1px solid #ffcdd2;   /* viền đỏ nhạt */
+}
+
+/* nút thêm vào giỏ */
+.btn-add {
+  background-color: #ffa726;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.25s;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.btn-add:hover {
+  background-color: #fb8c00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== PHÂN TRANG ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.page-btn {
+  background: #fff;
+  border: 1px solid #2e7d32;
+  color: #2e7d32;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
   text-decoration: none;
   font-weight: 500;
 }
@@ -572,3 +625,4 @@
 .alert.error {
   background-color: #d32f2f;
 }
+
