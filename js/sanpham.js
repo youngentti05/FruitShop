@@ -13,21 +13,15 @@ const allProducts = [
   { name: "Cam Mỹ", price: "140.000đ / kg", tag: "Nhập khẩu", img: "assets/img/cam-my.jpg" },
   { name: "Lựu đỏ", price: "90.000đ / kg", tag: "Nhập khẩu", img: "assets/img/luu.jpg" }
 ];
-
-// ===== PHÂN TRANG =====
-const productsPerPage = 6; // hiển thị 3x2
-let currentPage = 1;
-
-// ===== PHẦN TỬ HTML =====
 const grid = document.getElementById("productGrid");
-const pagination = document.querySelector(".pagination");
+const pagination = document.getElementById("pagination");
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 
-// ===== BIẾN DỮ LIỆU =====
-let filteredProducts = [...allProducts]; // mặc định hiển thị tất cả
+let filteredProducts = [...allProducts];
+let currentPage = 1;
+const productsPerPage = 6;
 
-// ===== HÀM HIỂN THỊ SẢN PHẨM =====
 function renderProducts(page) {
   grid.innerHTML = "";
 
@@ -36,7 +30,7 @@ function renderProducts(page) {
   const products = filteredProducts.slice(start, end);
 
   if (products.length === 0) {
-    grid.innerHTML = `<p style="grid-column: span 3; text-align:center; color:#777;">Không tìm thấy sản phẩm nào phù hợp.</p>`;
+    grid.innerHTML = `<p style="text-align:center; color:#777;">Không tìm thấy sản phẩm nào phù hợp.</p>`;
     pagination.style.display = "none";
     return;
   } else {
@@ -44,13 +38,14 @@ function renderProducts(page) {
   }
 
   products.forEach(p => {
+    const tagClass = p.tag === "Sắp hết" ? "tag low-stock" : "tag";
     const card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
       <img src="${p.img}" alt="${p.name}">
       <h3>${p.name}</h3>
       <p class="price">${p.price}</p>
-      <span class="tag">${p.tag}</span>
+      <span class="${tagClass}">${p.tag}</span>
       <button class="btn-add">Thêm vào giỏ</button>
     `;
     grid.appendChild(card);
@@ -59,7 +54,6 @@ function renderProducts(page) {
   updatePagination();
 }
 
-// ===== HÀM CẬP NHẬT PHÂN TRANG =====
 function updatePagination() {
   pagination.innerHTML = "";
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
@@ -69,16 +63,16 @@ function updatePagination() {
     btn.href = "#";
     btn.textContent = i;
     btn.className = "page-btn" + (i === currentPage ? " active" : "");
-    btn.addEventListener("click", (e) => {
+    btn.addEventListener("click", e => {
       e.preventDefault();
       currentPage = i;
       renderProducts(currentPage);
+      window.scrollTo({ top: 0, behavior: "smooth" }); // scroll lên đầu trang khi đổi trang
     });
     pagination.appendChild(btn);
   }
 }
 
-// ===== HÀM TÌM KIẾM SẢN PHẨM =====
 function searchProducts(keyword) {
   keyword = keyword.toLowerCase();
   filteredProducts = allProducts.filter(p => p.name.toLowerCase().includes(keyword));
@@ -86,16 +80,7 @@ function searchProducts(keyword) {
   renderProducts(currentPage);
 }
 
-// ===== SỰ KIỆN TÌM KIẾM =====
-searchBtn.addEventListener("click", () => {
-  searchProducts(searchInput.value.trim());
-});
+searchBtn.addEventListener("click", () => searchProducts(searchInput.value.trim()));
+searchInput.addEventListener("keyup", e => { if (e.key === "Enter") searchProducts(searchInput.value.trim()); });
 
-searchInput.addEventListener("keyup", e => {
-  if (e.key === "Enter") {
-    searchProducts(searchInput.value.trim());
-  }
-});
-
-// ===== KHỞI TẠO TRANG 1 =====
 renderProducts(currentPage);
