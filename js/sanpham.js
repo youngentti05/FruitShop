@@ -17,7 +17,6 @@ const allProducts = [
 const productsPerPage = 6;
 let currentPage = 1;
 
-// HTML
 const grid = document.getElementById("productGrid");
 const pagination = document.getElementById("pagination");
 const searchInput = document.getElementById("searchInput");
@@ -58,7 +57,6 @@ function applyFilters() {
   renderProducts(currentPage);
 }
 
-// ====== HIỂN THỊ SẢN PHẨM ======
 function renderProducts(page) {
   grid.innerHTML = "";
 
@@ -66,21 +64,21 @@ function renderProducts(page) {
   const products = filteredProducts.slice(start, start + productsPerPage);
 
   if (products.length === 0) {
-    grid.innerHTML = `<p style="grid-column: span 3; text-align:center; color:#777;">Không có sản phẩm phù hợp.</p>`;
-    pagination.innerHTML = "";
+    grid.innerHTML = `<p style="text-align:center; color:#777;">Không tìm thấy sản phẩm nào phù hợp.</p>`;
+    pagination.style.display = "none";
     return;
   }
 
   products.forEach(p => {
     const isLow = p.tag.toLowerCase() === "sắp hết";
     const tagClass = isLow ? "tag low-stock" : "tag";
-
     const card = document.createElement("div");
     card.className = "product-card";
 
     card.innerHTML = `
       <img src="${p.img}" alt="${p.name}">
       <h3>${p.name}</h3>
+
       <p class="price">${p.price.toLocaleString("vi-VN")}đ / kg</p>
       <span class="${tagClass}">${p.tag}</span>
       <button class="btn-add">Thêm vào giỏ</button>
@@ -91,7 +89,6 @@ function renderProducts(page) {
   updatePagination();
 }
 
-// ====== PHÂN TRANG ======
 function updatePagination() {
   pagination.innerHTML = "";
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
@@ -101,23 +98,24 @@ function updatePagination() {
     btn.href = "#";
     btn.textContent = i;
     btn.className = "page-btn" + (i === currentPage ? " active" : "");
-    btn.onclick = (e) => {
+    btn.addEventListener("click", e => {
       e.preventDefault();
       currentPage = i;
       renderProducts(currentPage);
-    };
+      window.scrollTo({ top: 0, behavior: "smooth" }); // scroll lên đầu trang khi đổi trang
+    });
+
     pagination.appendChild(btn);
   }
 }
 
-// ====== EVENT ======
-document.querySelector(".filter-apply").addEventListener("click", applyFilters);
-document.querySelectorAll(".origin-filter, .price-filter").forEach(input => {
-  input.addEventListener("change", applyFilters);
-});
+function searchProducts(keyword) {
+  keyword = keyword.toLowerCase();
+  filteredProducts = allProducts.filter(p => p.name.toLowerCase().includes(keyword));
+  currentPage = 1;
+  renderProducts(currentPage);
+}
 
-searchBtn.addEventListener("click", () => {
-  applyFilters();
-});
-
+searchBtn.addEventListener("click", () => searchProducts(searchInput.value.trim()));
+searchInput.addEventListener("keyup", e => { if (e.key === "Enter") searchProducts(searchInput.value.trim()); });
 renderProducts(currentPage);
