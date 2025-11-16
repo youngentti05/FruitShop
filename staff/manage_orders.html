@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Fruit Staff | Quản lý đơn hàng</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/staff.css">
+  <script src="../js/staff.js" defer></script>
+</head>
+
+<body>
+
+<aside class="sidebar">
+  <h2>🍊 FRUIT STAFF</h2>
+  <ul>
+    <li><a href="dashboard.html">Tổng quan</a></li>
+    <li><a href="manage_products.html">Sản phẩm</a></li>
+    <li><a href="manage_orders.html">Đơn hàng</a></li>
+    <li><a href="manage_users.html">Khách hàng</a></li>
+    <li><a href="#" class="logout-btn">Đăng xuất</a></li>
+  </ul>
+</aside>
+
+
+
+<main class="main">
+
+  <div class="page-header">
+    <h1>Quản lý đơn hàng</h1>
+  </div>
+
+  <div class="toolbar">
+    <input type="text" id="searchOrder" placeholder="🔍 Tìm đơn hàng theo ID...">
+    <select id="filterStatus">
+      <option value="">Lọc theo trạng thái</option>
+      <option value="Chờ xử lý">Chờ xử lý</option>
+      <option value="Đang giao">Đang giao</option>
+      <option value="Hoàn tất">Hoàn tất</option>
+    </select>
+  </div>
+
+  <div class="table-box">
+    <table id="olist">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Ngày</th>
+          <th>Tổng tiền</th>
+          <th>Trạng thái</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- JS render -->
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+</body>
+</html>
