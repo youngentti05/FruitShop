@@ -651,4 +651,13 @@
   background-color: #2e7d32;
   color: #fff;
 }
+/* ẨN form */
+.hidden {
+  display: none !important;
+}
+
+/* Form đang hiển thị */
+.show {
+  display: flex !important;
+}
 
